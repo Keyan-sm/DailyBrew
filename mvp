@@ -1,18 +1,32 @@
 MVP: 
 Input: Your favorite newsletters
-Pulled straight from email, so we dont need to worry abt logging into mult services to gather inputs 
-Could easily pull based on subject line of each newsletter or email address 
+    -Pulled straight from email, so we dont need to worry abt logging into mult services to gather inputs 
+    -Could easily pull based on subject line of each newsletter or email address 
+
 Output: A daily podcast that recaps what's in your inbox today.
-Similar style to morning brew daily; conversational 
-Tentatively, will use the eleven lab podcast API Create Podcast | ElevenLabs Documentation 
+    - Similar style to morning brew daily; conversational 
+    - Tentatively, will use the eleven lab podcast API Create Podcast | ElevenLabs Documentation 
 We will engineer a system prompt to curate the style and tone of the podcast; later
 
 
 Tentative user pipeline:
 1. Sign in with google
+    - Gmail API
+    - Script runs, authenticates, searches for specific sender addresses (e.g., Morning Brew, The Skimm), and grabs the HTML body
 2. Select 3-4 daily newsletters 
+    - These will be the user's selection of newsletters; call this set N, contains identifiers for each newsletter 
 3. Each morning at x time, automatically parse thru each newsletter 
-4. Feed into system promt, create podcast 
-5. Possibly just publish podcasts to spotify 
-For mvp, avoids front end for now 
-
+    - Send full body of each newletter to script system prompt (SSP), using a more intelegnt model to create script matching our tone 
+    - I read for the creation of Notebook LM, they used a similary system with a system prompt to create the script; rather than just dumping the full body of each newsletter into podcast system prompt  
+4. input SSP into eleven labs API 
+    - System Podcast Prompt (SPP) will handle Tone
+    - Output binary audio data (MP3), call this raw podcast audio (RPA)
+5. Storage on GCS Always Free Tier 
+    - input/upload RPA.mp3 file with public read access
+    - Update RSS Feed: 
+        - Script downloads existing feed.xml from bucket
+        - Appends new episode node (Title, Date, Description, Enclosure URL pointing to RPA.mp3).
+        - Uploads updated feed.xml back to bucket, overwriting the old one
+6. Concumption 
+    - input; One-time setup: User pastes GCS URL (https://storage.googleapis.com/[bucket]/feed.xml) into podcast app (e.g., apple podcast, pocket casts).
+    - output: App detects change in XML every day at x time, auto-downloads episode. User hits play.
