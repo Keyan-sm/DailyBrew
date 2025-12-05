@@ -1,0 +1,18 @@
+MVP: 
+Input: Your favorite newsletters
+Pulled straight from email, so we dont need to worry abt logging into mult services to gather inputs 
+Could easily pull based on subject line of each newsletter or email address 
+Output: A daily podcast that recaps what's in your inbox today.
+Similar style to morning brew daily; conversational 
+Tentatively, will use the eleven lab podcast API Create Podcast | ElevenLabs Documentation 
+We will engineer a system prompt to curate the style and tone of the podcast; later
+
+
+Tentative user pipeline:
+1. Sign in with google
+2. Select 3-4 daily newsletters 
+3. Each morning at x time, automatically parse thru each newsletter 
+4. Feed into system promt, create podcast 
+5. Possibly just publish podcasts to spotify 
+For mvp, avoids front end for now 
+
