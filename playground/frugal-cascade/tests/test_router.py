@@ -1,6 +1,6 @@
-from llm_router import Router, featurize, score_models, default_registry
-from llm_router.evaluate import SAMPLE_PROMPTS, evaluate
-from llm_router.policy import Weights
+from frugal_cascade import Router, featurize, score_models, default_registry
+from frugal_cascade.evaluate import SAMPLE_PROMPTS, evaluate
+from frugal_cascade.policy import Weights
 
 
 def test_featurize_detects_code_and_chat():

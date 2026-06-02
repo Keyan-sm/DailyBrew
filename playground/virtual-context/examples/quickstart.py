@@ -1,5 +1,5 @@
 """Run me: `python examples/quickstart.py` (offline, no API keys)."""
-from llm_memory import MemoryStore
+from virtual_context import MemoryStore
 
 mem = MemoryStore()  # in-memory; pass a path to persist
 

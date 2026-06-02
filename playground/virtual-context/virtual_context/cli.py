@@ -1,4 +1,4 @@
-"""CLI: `llm-memory remember|recall|summarize|import|export` against a SQLite DB."""
+"""CLI: `virtual-context remember|recall|summarize|import|export` against a SQLite DB."""
 from __future__ import annotations
 
 import argparse
@@ -9,7 +9,7 @@ from .memory import MemoryStore
 
 
 def main(argv=None) -> int:
-    parser = argparse.ArgumentParser(prog="llm-memory",
+    parser = argparse.ArgumentParser(prog="virtual-context",
                                      description="A structured, queryable memory layer for agents.")
     parser.add_argument("--db", default="memory.db", help="SQLite path (default: memory.db)")
     sub = parser.add_subparsers(dest="cmd", required=True)

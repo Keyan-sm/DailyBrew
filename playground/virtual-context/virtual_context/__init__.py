@@ -1,4 +1,4 @@
-"""llm-memory: a structured, temporal, queryable memory layer for LLM agents."""
+"""virtual-context: MemGPT-style virtual context + Generative-Agents memory retrieval for LLM agents."""
 from .embedding import Embedder, HashingEmbedder, cosine
 from .memory import Hit, MemoryStore
 from .store import Memory, Store

@@ -3,21 +3,21 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "llm-memory"
+name = "virtual-context"
 version = "0.1.0"
-description = "A structured, temporal, queryable memory layer for LLM agents — beyond a pile of markdown files."
+description = "MemGPT-style external memory for LLM agents, with Generative-Agents retrieval (relevance + recency + importance)."
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
 authors = [{ name = "Keyan Mikaili" }]
-keywords = ["llm", "agents", "memory", "rag", "sqlite", "harness"]
+keywords = ["llm", "agents", "memory", "memgpt", "generative-agents", "sqlite"]
 dependencies = []
 
 [project.optional-dependencies]
 dev = ["pytest>=7"]
 
 [project.scripts]
-llm-memory = "llm_memory.cli:main"
+virtual-context = "virtual_context.cli:main"
 
 [tool.setuptools]
-packages = ["llm_memory"]
+packages = ["virtual_context"]

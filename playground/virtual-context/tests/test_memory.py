@@ -1,8 +1,8 @@
 import time
 
-from llm_memory import MemoryStore, dispatch
-from llm_memory.markdown_io import export_markdown, import_markdown
-from llm_memory.temporal import now_ts
+from virtual_context import MemoryStore, dispatch
+from virtual_context.markdown_io import export_markdown, import_markdown
+from virtual_context.temporal import now_ts
 
 
 def test_remember_and_recall_relevance():

@@ -3,14 +3,14 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "llm-router"
+name = "frugal-cascade"
 version = "0.1.0"
-description = "A small, explainable, cost-aware router that picks the best-fit LLM per request."
+description = "FrugalGPT-style LLM cascade + RouteLLM-style routing: cheap model first, escalate on low confidence."
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
 authors = [{ name = "Keyan Mikaili" }]
-keywords = ["llm", "routing", "model-selection", "agents", "cost-optimization"]
+keywords = ["llm", "llm-cascade", "frugalgpt", "routellm", "llm-routing", "cost-optimization"]
 dependencies = []
 
 [project.optional-dependencies]
@@ -20,7 +20,7 @@ anthropic = ["anthropic>=0.40"]
 dev = ["pytest>=7", "pyyaml>=6"]
 
 [project.scripts]
-llm-router = "llm_router.cli:main"
+frugal-cascade = "frugal_cascade.cli:main"
 
 [tool.setuptools]
-packages = ["llm_router"]
+packages = ["frugal_cascade"]

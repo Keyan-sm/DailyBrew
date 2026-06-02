@@ -1,4 +1,4 @@
-"""Command-line interface: `llm-router route|run|eval`."""
+"""Command-line interface: `frugal-cascade route|run|eval`."""
 from __future__ import annotations
 
 import argparse
@@ -15,7 +15,7 @@ def _build_router(args) -> Router:
 
 
 def main(argv=None) -> int:
-    parser = argparse.ArgumentParser(prog="llm-router",
+    parser = argparse.ArgumentParser(prog="frugal-cascade",
                                      description="Cost-aware LLM router for agent workspaces.")
     parser.add_argument("--config", help="Path to a models.yaml registry.")
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -27,7 +27,8 @@ def main(argv=None) -> int:
     p_run.add_argument("prompt")
     p_run.add_argument("--no-cascade", action="store_true")
 
-    sub.add_parser("eval", help="Run the built-in sample suite and report cost savings.")
+    p_eval = sub.add_parser("eval", help="Run the built-in sample suite and report cost savings.")
+    p_eval.add_argument("-v", "--verbose", action="store_true", help="Show per-prompt detail.")
 
     args = parser.parse_args(argv)
     router = _build_router(args)
@@ -49,7 +50,11 @@ def main(argv=None) -> int:
         }, indent=2))
     elif args.cmd == "eval":
         report = evaluate(SAMPLE_PROMPTS, router)
-        print(json.dumps(report.__dict__, indent=2))
+        print(f"n={report.n}  routed=${report.routed_cost:.4f}  "
+              f"baseline(always-frontier)=${report.baseline_cost:.4f}  "
+              f"savings={report.savings_pct}%  escalations={report.escalations}/{report.n}")
+        if args.verbose:
+            print(json.dumps(report.per_prompt, indent=2))
     return 0
 
 

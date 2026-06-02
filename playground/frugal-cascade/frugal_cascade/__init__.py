@@ -1,4 +1,4 @@
-"""llm-router: a small, explainable, cost-aware router for LLM workloads."""
+"""frugal-cascade: a FrugalGPT-style cost-aware LLM cascade and router."""
 from .features import RequestFeatures, featurize
 from .policy import ScoredModel, Weights, score_models
 from .providers import AnthropicProvider, MockProvider, OpenAIProvider, Provider, Response

@@ -1,6 +1,6 @@
 """Run me: `python examples/quickstart.py` (no API keys needed — uses the mock provider)."""
-from llm_router import Router
-from llm_router.evaluate import SAMPLE_PROMPTS, evaluate
+from frugal_cascade import Router
+from frugal_cascade.evaluate import SAMPLE_PROMPTS, evaluate
 
 router = Router()
 

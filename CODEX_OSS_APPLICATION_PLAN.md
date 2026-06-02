@@ -3,6 +3,14 @@
 > Goal: Free 6 months of ChatGPT Pro + Codex (~$1,200 value) to use as extra
 > agentic-coding capacity alongside Claude Pro.
 
+> **Status update:** The two flagship projects below are now built and live in
+> `playground/`, each implementing a verified published method:
+> **`frugal-cascade`** (FrugalGPT cascade + RouteLLM routing) and
+> **`virtual-context`** (MemGPT external memory + Generative-Agents retrieval).
+> See `playground/HANDOFF.md` for promoting them to standalone repos and
+> `playground/RESEARCH_NOTES.md` for the citations. Where this doc says
+> "llm-router"/"LLM memory layer" below, read `frugal-cascade`/`virtual-context`.
+
 ---
 
 ## 0. Reality check on that tweet (read this first)
