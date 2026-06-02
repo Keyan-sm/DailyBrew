@@ -1,0 +1,42 @@
+# Example registry. Costs are USD per 1M tokens. Edit freely or point the CLI
+# at your own file with: llm-router --config config/models.yaml route "..."
+models:
+  - name: haiku
+    provider: anthropic
+    input_cost: 0.80
+    output_cost: 4.0
+    max_context: 200000
+    latency_tier: 1
+    general_quality: 0.74
+    tags: [cheap, fast]
+    quality: {chat: 0.78, extraction: 0.82, summarization: 0.80, code: 0.70, reasoning: 0.62, translation: 0.80}
+
+  - name: gpt-mini
+    provider: openai
+    input_cost: 0.60
+    output_cost: 2.4
+    max_context: 128000
+    latency_tier: 1
+    general_quality: 0.73
+    tags: [cheap, fast]
+    quality: {chat: 0.76, extraction: 0.80, summarization: 0.78, code: 0.72, reasoning: 0.64, translation: 0.78}
+
+  - name: sonnet
+    provider: anthropic
+    input_cost: 3.0
+    output_cost: 15.0
+    max_context: 200000
+    latency_tier: 2
+    general_quality: 0.88
+    tags: [balanced]
+    quality: {chat: 0.88, extraction: 0.90, summarization: 0.89, code: 0.91, reasoning: 0.86, translation: 0.87}
+
+  - name: opus
+    provider: anthropic
+    input_cost: 15.0
+    output_cost: 75.0
+    max_context: 200000
+    latency_tier: 3
+    general_quality: 0.94
+    tags: [frontier]
+    quality: {chat: 0.92, extraction: 0.93, summarization: 0.93, code: 0.96, reasoning: 0.95, translation: 0.90}
